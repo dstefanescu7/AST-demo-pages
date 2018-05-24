@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <style>
+         html, body {background-color: #ffffff; font-family: Arial, Helvetica, sans-serif; line-height: 150%, margin: 0;}
+         #container {margin: 20px auto;}
+         #left {width: 360px; padding: 20px; float: left;}
+         #right {padding: 20px; overflow: auto;}
+         H1 {text-align: center;}
+      </style>
+      <meta charset="utf-8">
+      <title>Demo Page - Banner AST Implementation</title>
+      <script type="text/javascript">
+         //create empty apntag object if it doesn't exist
+         var apntag = apntag || {};
+         //create a queue on the apntag object
+         apntag.anq = apntag.anq || [];
+         //load ast.js - async
+         (function() {
+            var d = document, e = d.createElement('script'), p = d.getElementsByTagName('head')[0];
+            e.type = 'text/javascript';  e.async = true;
+            e.src = '//acdn.adnxs.com/ast/ast.js';
+            p.insertBefore(e, p.firstChild);
+         })();
+         //push commands to loading queue, to allow for async loading
+         apntag.anq.push(function() {
+         //set global page options
+         apntag.setPageOpts({
+             member: 958
+             });
+         //define ad tags
+         apntag.defineTag({
+                tagId: 12886199,
+                sizes: [[300,250]],
+                targetId: 'apn_ad_slot_1'
+         });
+         apntag.defineTag({
+                enableSafeFrame: true,
+                tagId: 12992714,
+                sizes: [[300,250],[738,90]],
+                targetId: 'apn_ad_slot_2'
+         });
+         //start loading tags
+             apntag.loadTags();
+         });
+      </script>
+   </head>
+   <body>
+      <div id="container">
+         <h1>Demo Page - Banner AST Implenetation</h1>
+         <div id="left">
+            <h4>Simple Banner AST Tag</h4>
+            <div id="apn_ad_slot_1">
+               <script type="text/javascript">
+                  apntag.anq.push(function() {
+                      //signal to script that this DOM element has been loaded and is ready to be populated with an ad
+                      apntag.showTag('apn_ad_slot_1');
+                  });
+               </script>
+            </div>
+            <h4>Simple SafeFrame Banner AST Tag</h4>
+            <div id="apn_ad_slot_2">
+               <script type="text/javascript">
+                  apntag.anq.push(function() {
+                     //signal to script that this DOM element has been loaded and is ready to be populated with an ad
+                      apntag.showTag('apn_ad_slot_2');
+                  });
+               </script>
+            </div>
+         </div>
+         <div id="right">
+            <h4>Instructions</h4>
+            <p>Below you can see the code used to define the 2 tags implemented on this page through AST:</p>
+            <code>
+            apntag.defineTag({
+            <br>
+            tagId: 12886199,
+            <br>
+            sizes: [[300,250]],
+            <br>
+            targetId: 'apn_ad_slot_1'
+            <br>
+            });
+            <br>
+            <br>
+            apntag.defineTag({
+            <br>
+            enableSafeFrame: true,
+            <br>
+            tagId: 12992714,
+            <br>
+            sizes: [[300,250],[738,90]],
+            <br>
+            targetId: 'apn_ad_slot_2'
+            <br>
+            });
+            </code>
+            <br>
+            <p>It's important to note that before defining the tags, two other steps need to be implemented in order for this to work. Please follow the implementation documentation which can be found here: <a href="https://wiki.appnexus.com/display/console/Set+up+Placements+with+AST" target=_blank>AppNexus Wiki - Set up Placements with AST</a>.</p>
+            <p>For further AST API references, you can refer to the following documentation: <a href="https://wiki.appnexus.com/display/console/AST+API+Reference" target=_blank>AppNexus Wiki - AST API Reference</a>.</p>
+            <p>Further things to note:</p>
+            <ul>
+               <li>Setting <i>allowedFormats</i> on AST is optional; if it's set, it will override the media types assigned on the placements' settings in Console.</li>
+               <li>The media types allowed on the <i>allowedFormats</i> field are banner, video, native and audio. If you want a different format than these on the placements, then don't set the field and set the media type on the placement in Console.</li>
+               <li>It is possible to have several formats on the same placement (superauction).</li>
+               <li>As it can be seen in the above code, placement 12992714 has <i>enableSafeFrame: true</i>. This means it enables the SafeFrame iFrame. More information on this can be found here: <a href ="https://wiki.appnexus.com/display/console/SafeFrame+API+Reference" target=_blank>AppNexus Wiki - SafeFrame API Reference</a>.</li>
+            </ul>
+            <br>
+            <p>With the help of AST, roadblock can also be achieved. Please see this page for the setup: <a href ="http://dstefanescu.devnxs.net/banner_roadblock_ast_demo_page.html" target=_blank>Demo Page- Banner Roadblock AST Implementation</a>.
+         </div>
+      </div>
+   </body>
+</html>
