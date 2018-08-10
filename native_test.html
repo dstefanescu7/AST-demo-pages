@@ -27,50 +27,14 @@ apntag.anq.push(function() {
         tagId: 12119864,
         sizes: [[1,1]],
         targetId: 'an-demo-ad',
-        {
-	"native": {
-		"title": {
-			"required": true,
-			"max_length": 120
-		},
-		"body": {
-			"required": false,
-			"max_length": 150
-		},
-		"image": {
-			"required": true,
-			"sizes": [{
-					"width": 1200,
-					"height": 628
-				},
-				{
-					"width": 1200,
-					"height": 675
-				},
-				{
-					"width": 600,
-					"height": 314
-				},
-				{
-					"width": 600,
-					"height": 338
-				}
-			]
-		},
-		"icon": {
-			"required": false,
-			"sizes": [{}]
-		},
-		"sponsoredBy": {
-			"required": true,
-			"max_length": 50
-		},
-		"clickUrl": {
-			"required": true
-		},
-		"privacySupported": true
-	}
-}
+        native: {
+            title: {required: true, max_length: 140},
+            body: {required: true, max_length: 300},
+            image: {required: false},
+            sponsoredBy: {required: true, max_length: 50},
+            icon: {required:false, sizes: [{width: 300, height: 300}]},
+            cta: {required:false}
+        }
     });
     //start loading tags
     apntag.loadTags();
