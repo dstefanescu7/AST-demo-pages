@@ -1,48 +1,121 @@
 <html>
 <head>
-    <script type="text/javascript">
-    //create empty apntag object if it doesn't exist
-    var apntag = apntag || {};
-    //create a queue on the apntag object
-    apntag.anq = apntag.anq || [];
-    //load ast.js - async
-    (function() {
-        var d = document, scr = d.createElement('script'), pro = d.location.protocol,
-        tar = d.getElementsByTagName("head")[0];
-        scr.type = 'text/javascript';  scr.async = true;
-        scr.src = ((pro === 'https:') ? 'https' : 'http') + '://acdn.adnxs.com/ast/ast.js';
-        if(!apntag.l){apntag.l=true; tar.insertBefore(scr, tar.firstChild);}
-    })();
-    //push commands to loading queue, to allow for async loading
-    apntag.anq.push(function() {
-        //set global page options
-        apntag.setPageOpts({
-            member: 958
-        });
-            //define ad tags
+<script type="text/javascript">
+//create empty apntag object if it doesn't exist
+var apntag = apntag || {};
+//create a queue on the apntag object
+apntag.anq = apntag.anq || [];
+//load ast.js - async
+(function() {
+    var d = document, scr = d.createElement('script'), pro = d.location.protocol, tar = d.getElementsByTagName("head")[0];
+    scr.type = 'text/javascript'; scr.async = true;
+    scr.src = ((pro === 'https:') ? 'https' : 'http') + '://acdn.adnxs.com/ast/ast.js';
+    if(!apntag.l){apntag.l=true; tar.insertBefore(scr, tar.firstChild);}
+})();
+//push commands to loading queue, to allow for async loading
+apntag.anq.push(function() {
+    //set global page options
+    apntag.setPageOpts({
+        member: 882,
+        disablePsa: true,
+        targetingParams: {
+           
+        }
+    });
+    //define ad tags
     apntag.defineTag({
-        member: 958,
-        tagId: 5796745,
-        sizes: [1,1],
-        allowedFormats : ['native'],
-        targetId: 'tag_1'
+        tagId: 12119864,
+        sizes: [[1,1]],
+        targetId: 'an-demo-ad',
+        native: {
+            title: {required: true, max_length: 140},
+            body: {required: true, max_length: 300},
+            image: {required: false},
+            sponsoredBy: {required: true, max_length: 50},
+            icon: {required:false, sizes: [{width: 300, height: 300}]},
+            cta: {required:false}
+        }
     });
-	
-    apntag.onEvent('adLoaded','tag_1',function(data){
-    if (! data || !data.native) // no native ad available
-    return;
-    var native = data.native;
-    var clickUrl = native.clickTrackers && native.clickTrackers[0];
-    clickUrl += "clickenc=" + encodeURIComponent(native.clickUrl);
-    var impTracker = native.impressionTrackers && native.impressionTrackers[0];
-    var content = '<div id="creative-preview" style="border: #EEE 1px solid; width: 254px; padding: 20px;"><img src="' + native.iconImgUrl + '" name="icon_img_url" style="width: 30px; float: left; margin-right: 5px; vertical-align: middle; border-sizing: border-box;">  <div name="title" style="font-weight: bold; margin-top: 5px; box-sizing: border-box; font-size: 14px;">' + native.title + '</div>   <div style="clear:both"></div>  <div name="description" style="box-sizing: border-box; font-weight: 300; font-size: 14px; width: 254px;">' + native.description + '</div><a href="' + clickUrl + '" target="_blank"><img src="' + native.mainMedia[0].url + '" name="MAIN_IMG_URL" style="max-width: 254px; width: 254px;"></a><a href="' + clickUrl + '" target="_blank"><div name="cta" style="float: right; font-size: 12px; font-weight: bold;">' + native.cta + '</div></a><div style="clear:both"></div></div><img style="visibility: hidden; width:1px; height: 1px;" src="' + impTracker + '" />';
-        document.getElementById("tag_1").innerHTML = content;
-    });
+    //start loading tags
     apntag.loadTags();
-    });
-    </script>
+});
+</script>
 </head>
 <body>
+<script type="text/javascript">
+(function() {
+document.write('<div id="an-demo-ad"></div>');
+var stateCheck = setInterval(function() {
+    if(document.readyState === 'complete') {
+        clearInterval(stateCheck);
+        apntag.anq.push(function() {
+            apntag.showTag('an-demo-ad');
+            apntag.onEvent('adAvailable', function(adObj) {
+                var $ad = document.getElementById('an-demo-ad');
+                var nObj = adObj.native;
+                // not all native fields will be specified on the request,
+                // so make sure you trap any null values properly
+                var clickUrl = nObj.clickUrl;
+                var title = nObj.title;
+                var body = nObj.body;
+                var sponsor = nObj.sponsoredBy;
+                var imgSrc = nObj.image && nObj.image.url;
+                var cta = nObj.cta;
+                var iconSrc = nObj.icon && nObj.icon.url;
+
+                $ad.innerHTML = '<div class="an-native-ad stacked" style="display:block;font-family:Helvetica Neue, Helvetica, Arial, sans-serif;max-width:200px;"><a href="'+clickUrl+'" target="_blank"><img class="an-native-img" src="'+imgSrc+'" width="200" /></a><header class="an-native-headline" style="font-weight:bold;font-size:1.3em;">'+title+'</header><div class="an-native-body" style="margin:5px 0;">'+body+'</div><div class="an-native-sponsor-wrapper" style="color:#999999;font-size:0.8em;font-style:italic;"><span class="an-native-sponsor-label" style="font-weight:bold;">Sponsored by:</span> <span class="an-native-sponsor">'+sponsor+'</span></div></div>';
+
+                // collect and fire off the trackers
+                var impTrackers = nObj.impressionTrackers || [];
+                var jsTrackers = parseJsTrackers(nObj.javascriptTrackers) || [];
+                var clickTrackers = nObj.clickTrackers;
+
+                // fire imp trackers
+                for(var i = 0; i < impTrackers.length; i++) {
+                    fireRequest(impTrackers[i]);
+                }
+
+                for(var i = 0; i < jsTrackers.length; i++) {
+                    // this is where you would filter out tracker that you don't want to fire
+                    // for example, this will only include moat trackers:
+                    // if(url.indexOf('//z.moatads.com') > -1) { /* .... */ }
+                    if(true) {
+                        var d = document, scr = d.createElement('script'), tar = d.getElementsByTagName("head")[0];
+                        scr.type = 'text/javascript'; scr.async = true;
+                        scr.src = jsTrackers[i];
+                        tar.insertBefore(scr, tar.firstChild);
+                    }
+                }
+
+                // set up handlers for click trackers -
+                // this will only work if you wrap clickable elements in <a> tags
+                var $clickable = Array.prototype.slice.apply($ad.getElementsByTagName('a'));
+
+                for(var i = 0; i < $clickable.length; i++) {
+                    $clickable[i].addEventListener('click', function() {
+                        for(var j = 0; j < clickTrackers.length; j++) {
+                            fireRequest(clickTrackers[j]);
+                        }
+                    });
+                }
+            });
+        });
+    }
+}, 10);
+var fireRequest = function(url) {
+    var request = new XMLHttpRequest();
+    request.open('GET', url);
+    request.send();
+};
+var parseJsTrackers = function(str) {
+    var urls = [], regex = /(?:<script.+?)(?:src=")(.+?)".*?><\/script>/g, result;
+    while((result = regex.exec(str)) !== null) {
+        urls.push(result[1]);
+    }
+    return urls;
+}
+})();
+</script>
     <div id="tag_1">
         <script type="text/javascript">
         apntag.anq.push(function() {
