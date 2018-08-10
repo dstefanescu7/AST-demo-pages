@@ -42,14 +42,79 @@ apntag.anq.push(function() {
 </script>
 </head>
 <body>
-    <div id="tag_1">
-        <script type="text/javascript">
+<script type="text/javascript">
+(function() {
+document.write('<div id="an-demo-ad"></div>');
+var stateCheck = setInterval(function() {
+    if(document.readyState === 'complete') {
+        clearInterval(stateCheck);
         apntag.anq.push(function() {
-            //signal to script that this DOM element has been loaded and is ready to be populated with an ad
-            apntag.showTag('tag_1');
+            apntag.showTag('an-demo-ad');
+            apntag.onEvent('adAvailable', function(adObj) {
+                var $ad = document.getElementById('an-demo-ad');
+                var nObj = adObj.native;
+                // not all native fields will be specified on the request,
+                // so make sure you trap any null values properly
+                var clickUrl = nObj.clickUrl;
+                var title = nObj.title;
+                var body = nObj.body;
+                var sponsor = nObj.sponsoredBy;
+                var imgSrc = nObj.image && nObj.image.url;
+                var cta = nObj.cta;
+                var iconSrc = nObj.icon && nObj.icon.url;
+
+                $ad.innerHTML = '<div class="an-native-ad stacked" style="display:block;font-family:Helvetica Neue, Helvetica, Arial, sans-serif;max-width:200px;"><a href="'+clickUrl+'" target="_blank"><img class="an-native-img" src="'+imgSrc+'" width="200" /></a><header class="an-native-headline" style="font-weight:bold;font-size:1.3em;">'+title+'</header><div class="an-native-body" style="margin:5px 0;">'+body+'</div><div class="an-native-sponsor-wrapper" style="color:#999999;font-size:0.8em;font-style:italic;"><span class="an-native-sponsor-label" style="font-weight:bold;">Sponsored by:</span> <span class="an-native-sponsor">'+sponsor+'</span></div></div>';
+
+                // collect and fire off the trackers
+                var impTrackers = nObj.impressionTrackers || [];
+                var jsTrackers = parseJsTrackers(nObj.javascriptTrackers) || [];
+                var clickTrackers = nObj.clickTrackers;
+
+                // fire imp trackers
+                for(var i = 0; i < impTrackers.length; i++) {
+                    fireRequest(impTrackers[i]);
+                }
+
+                for(var i = 0; i < jsTrackers.length; i++) {
+                    // this is where you would filter out tracker that you don't want to fire
+                    // for example, this will only include moat trackers:
+                    // if(url.indexOf('//z.moatads.com') > -1) { /* .... */ }
+                    if(true) {
+                        var d = document, scr = d.createElement('script'), tar = d.getElementsByTagName("head")[0];
+                        scr.type = 'text/javascript'; scr.async = true;
+                        scr.src = jsTrackers[i];
+                        tar.insertBefore(scr, tar.firstChild);
+                    }
+                }
+
+                // set up handlers for click trackers -
+                // this will only work if you wrap clickable elements in <a> tags
+                var $clickable = Array.prototype.slice.apply($ad.getElementsByTagName('a'));
+
+                for(var i = 0; i < $clickable.length; i++) {
+                    $clickable[i].addEventListener('click', function() {
+                        for(var j = 0; j < clickTrackers.length; j++) {
+                            fireRequest(clickTrackers[j]);
+                        }
+                    });
+                }
+            });
         });
-        </script>
-    </div>
-	
+    }
+}, 10);
+var fireRequest = function(url) {
+    var request = new XMLHttpRequest();
+    request.open('GET', url);
+    request.send();
+};
+var parseJsTrackers = function(str) {
+    var urls = [], regex = /(?:<script.+?)(?:src=")(.+?)".*?><\/script>/g, result;
+    while((result = regex.exec(str)) !== null) {
+        urls.push(result[1]);
+    }
+    return urls;
+}
+})();
+</script>
 </body>
 </html>
