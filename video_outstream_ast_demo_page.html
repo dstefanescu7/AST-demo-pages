@@ -61,9 +61,34 @@
       <br>
       <h1>Demo Page - Video (Outstream) AST Implementation</h1>
       <br>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras iaculis, nibh eget condimentum lacinia, ligula libero interdum est, sed fermentum urna lorem ac turpis. Sed quis tincidunt lacus. Etiam id lectus non neque fermentum volutpat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Maecenas consequat, magna ut placerat tristique, urna est semper nibh, eu posuere dui tellus at purus. Proin ac purus nec quam molestie congue non ut erat. Donec dapibus justo ligula, nec iaculis nibh iaculis ut. Morbi neque erat, mollis sed sollicitudin at, dictum ac odio. Aenean in laoreet ante. Proin bibendum ornare sapien.</p>
-      </p>Pellentesque vel vehicula velit. Sed luctus mauris ac leo pulvinar, ac consequat tellus dapibus. Quisque non feugiat tellus, at vulputate tellus. Curabitur dui erat, maximus at posuere nec, fermentum sit amet ex. Nulla porttitor id sapien ut dictum. Sed blandit orci eget elit dignissim efficitur. Maecenas eu libero gravida, aliquet dolor nec, porttitor nulla. Etiam ut viverra diam.</p>
-      <p>Vivamus vitae ex ut felis accumsan pretium et et ex. Aliquam facilisis augue a enim volutpat pretium. Donec sed pellentesque eros, ac gravida lectus. Fusce auctor ligula leo, quis semper sem mattis nec. Aenean ultricies nisl mi, sed pulvinar mi efficitur in. Etiam tincidunt sapien justo, in iaculis risus vestibulum sed. Mauris faucibus ullamcorper justo, in faucibus mi lobortis nec.</p>
+      <h4>Instructions</h4>
+      </p>Below you will see the code used to define the video tag implemented on this page through AST:</p>
+      <code>
+      apntag.defineTag({
+      tagId: 12886207,
+      allowedFormats: ['video'],
+      sizes: [[1,1]],
+      targetId: 'apn_ad_slot_1',
+      rendererOptions: {
+      "playerTechnology": ["html5","flash"],
+      "adText": "Ad",
+      "showMute": true,
+      "showVolume": true,
+      "nonViewableBehavior" : "pause",
+      "showProgressBar": true,
+      "autoInitialSize": false,
+      "allowFullscreen": true,
+      "skippable": {
+      "videoThreshold": 15,
+      "videoOffset": 5,
+      "skipLocation": "top-left",
+      "skipText": "Video can be skipped in %%TIME%% seconds",
+      "skipButtonText": "SKIP"
+      }
+      }
+      });
+      </code>
+      <br>
       <h4>Outstream AST tag</h4>
       <div id="apn_ad_slot_1">
          <script type="text/javascript">
@@ -73,10 +98,19 @@
             });
          </script>
       </div>
-      <p>Proin consequat tincidunt neque id vestibulum. Proin porttitor feugiat ipsum, sit amet consectetur enim vestibulum id. Fusce lobortis dolor ligula, vel feugiat dui lacinia quis. Duis rutrum rutrum arcu non commodo. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris iaculis suscipit efficitur. Maecenas vestibulum scelerisque nulla, non posuere turpis fermentum ac.</p>
-      <p>Etiam est neque, pretium non lectus quis, ornare facilisis erat. Etiam finibus mi massa, nec efficitur erat fringilla vel. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque dapibus diam imperdiet libero lobortis imperdiet. Nam eu leo pharetra, hendrerit lectus in, porttitor magna. Quisque tempus quam eu libero tempus consectetur. Proin vel massa ut libero sodales venenatis eget sit amet orci. Phasellus elit sapien, scelerisque eleifend dapibus ut, laoreet varius purus. Proin justo dui, luctus ut diam in, tincidunt laoreet nisl. Sed egestas est sed fringilla faucibus. Nunc in urna dui. Ut consequat lacus at scelerisque dictum. Curabitur quis metus porttitor, lobortis augue ac, ultrices orci. Duis non porta dolor. Phasellus congue turpis libero, nec sollicitudin felis scelerisque a.</p>
+      <br>
+      <p>Just like for banner, before defining the tag, two other steps need to be implemented in order for this to work. Please follow the implementation documentation which can be found here: <a href="https://wiki.appnexus.com/display/console/Set+up+Placements+with+AST" target=_blank>AppNexus Wiki - Set up Placements with AST</a>.</p>
+      <p>For further AST API references, you can refer to the following documentation: <a href="https://wiki.appnexus.com/display/console/AST+API+Reference" target=_blank>AppNexus Wiki - AST API Reference</a>.</p>
+      <p>Additionally, for video, it's also important to check the <a href="https://wiki.appnexus.com/display/console/Outstream+Video+Player+Options" target=_blank>Outstream Video Player Options</a> to see how the player can be set up and what kind of options are available.</p>
+      <p>Further things to note:</p>
+      <ul>
+         <li>The tags have to be within a friendly iFrame.</li>
+         <li>You can add multiple sizes and media types on the tags so that it will allow banner to serve on the same placement, for example, if there's no video demand available. However, this is not support by all external bidders - so far only DBM, Adcom and comcast are supporting it.</li>
+         <li>Even if the above is not supported, it's still good to add both video and banner media types, with video as first option, since if it's not supported, then only the first option will be taken into consideration.</li>
+      </ul>
+      <p>Finally, regularly checking on the <a href="https://wiki.appnexus.com/display/console/AST+Release+History" target=_blank>AST release history</a> is encouaged so that you can see the latest releases and adjust the code accordingly if needed (due to breaking changes, for example).</p>
       <footer style="color:#999;text-align:center">
          <i><small>© 2018 AppNexus Inc. All Rights Reserved</small></i>
       </footer>
-    </body>
+   </body>
 </html>
