@@ -63,31 +63,31 @@
       <br>
       <h4>Instructions</h4>
       </p>Below you will see the code used to define the video tag implemented on this page through AST:</p>
-      <code>
+      <textarea readonly>
       apntag.defineTag({
-      tagId: 12886207,
-      allowedFormats: ['video', 'banner'],
-      sizes: [[1,1],[480,270]],
-      targetId: 'apn_ad_slot_1',
-      rendererOptions: {
-      "playerTechnology": ["html5","flash"],
-      "adText": "Ad",
-      "showMute": true,
-      "showVolume": true,
-      "nonViewableBehavior" : "pause",
-      "showProgressBar": true,
-      "autoInitialSize": false,
-      "allowFullscreen": true,
-      "skippable": {
-      "videoThreshold": 15,
-      "videoOffset": 5,
-      "skipLocation": "top-left",
-      "skipText": "Video can be skipped in %%TIME%% seconds",
-      "skipButtonText": "SKIP"
-      }
-      }
+	   tagId: 12886207,
+	   allowedFormats: ['video', 'banner'],
+	   sizes: [[1, 1],[480, 270]],
+	   targetId: 'apn_ad_slot_1',
+	   rendererOptions: {
+		   "playerTechnology": ["html5", "flash"],
+		   "adText": "Ad",
+		   "showMute": true,
+		   "showVolume": true,
+		   "nonViewableBehavior": "pause",
+		   "showProgressBar": true,
+		   "autoInitialSize": false,
+		   "allowFullscreen": true,
+		   "skippable": {
+		   	"videoThreshold": 15,
+		   	"videoOffset": 5,
+	   		"skipLocation": "top-left",
+	   		"skipText": "Video can be skipped in %%TIME%% seconds",
+		   	"skipButtonText": "SKIP"
+		   }
+	   }
       });
-      </code>
+      </textarea>
       <br>
       <h4>Outstream AST tag</h4>
       <div id="apn_ad_slot_1">
