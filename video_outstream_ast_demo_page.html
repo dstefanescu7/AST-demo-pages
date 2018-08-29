@@ -31,8 +31,8 @@
          //define ad tags
          apntag.defineTag({
                 tagId: 12886207,
-                allowedFormats: ['video'],
-                sizes: [[1,1]],
+                allowedFormats: ['video', 'banner'],
+                sizes: [[1,1],[480,270]],
                 targetId: 'apn_ad_slot_1',
                                 rendererOptions: {
                                         "playerTechnology": ["html5","flash"],
@@ -65,17 +65,11 @@
       </p>Below you will see the code used to define the video tag implemented on this page through AST:</p>
       <code>
       apntag.defineTag({
-      <br>
       tagId: 12886207,
-      <br>   
-      allowedFormats: ['video'],
-      <br>
-      sizes: [[1,1]],
-      <br>
+      allowedFormats: ['video', 'banner'],
+      sizes: [[1,1],[480,270]],
       targetId: 'apn_ad_slot_1',
-      <br>
       rendererOptions: {
-      <br>
       "playerTechnology": ["html5","flash"],
       "adText": "Ad",
       "showMute": true,
@@ -105,7 +99,7 @@
          </script>
       </div>
       <br>
-      <p>Just like for banner, before defining the tag, two other steps need to be implemented in order for this to work. Please follow the implementation documentation which can be found here: <a href="https://wiki.appnexus.com/display/console/Set+up+Placements+with+AST" target=_blank>AppNexus Wiki - Set up Placements with AST</a>.</p>
+      <p>Just like for banner, before defining the tag, two other steps need to be implemented in order for this to work. Please follow the implementation documentation which can be found here: <a href="https://wiki.appnexus.com/display/sdk/Set+up+Placements+with+AST" target=_blank>AppNexus Wiki - Set up Placements with AST</a>.</p>
       <p>For further AST API references, you can refer to the following documentation: <a href="https://wiki.appnexus.com/display/console/AST+API+Reference" target=_blank>AppNexus Wiki - AST API Reference</a>.</p>
       <p>Additionally, for video, it's also important to check the <a href="https://wiki.appnexus.com/display/console/Outstream+Video+Player+Options" target=_blank>Outstream Video Player Options</a> to see how the player can be set up and what kind of options are available.</p>
       <p>Further things to note:</p>
