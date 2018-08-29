@@ -72,30 +72,22 @@
          <div id="right">
             <h4>Instructions</h4>
             <p>Below you can see the code used to define the 2 tags implemented on this page through AST:</p>
+            <pre>
             <code>
             apntag.defineTag({
-            <br>
-            tagId: 12886199,
-            <br>
-            sizes: [[300,250]],
-            <br>
-            targetId: 'apn_ad_slot_1'
-            <br>
+               tagId: 12886199,
+               sizes: [[300,250]],
+               targetId: 'apn_ad_slot_1'
             });
-            <br>
-            <br>
+    
             apntag.defineTag({
-            <br>
-            enableSafeFrame: true,
-            <br>
-            tagId: 12992714,
-            <br>
-            sizes: [[300,250],[738,90]],
-            <br>
-            targetId: 'apn_ad_slot_2'
-            <br>
+               enableSafeFrame: true,
+               tagId: 12992714,
+               sizes: [[300,250],[738,90]],
+               targetId: 'apn_ad_slot_2'
             });
             </code>
+            </pre>
             <br>
             <p>It's important to note that before defining the tags, two other steps need to be implemented in order for this to work. Please follow the implementation documentation which can be found here: <a href="https://wiki.appnexus.com/display/sdk/Set+up+Placements+with+AST" target=_blank>AppNexus Wiki - Set up Placements with AST</a>.</p>
             <p>For further AST API references, you can refer to the following documentation: <a href="https://wiki.appnexus.com/display/console/AST+API+Reference" target=_blank>AppNexus Wiki - AST API Reference</a>.</p>
