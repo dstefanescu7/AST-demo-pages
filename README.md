@@ -1,6 +1,6 @@
 ## Welcome to the AST demo pages project
 
-These demo pages are inteded to showcast various AST implementations, explaining how they are done and showing the code used, as well as including additional useful information.
+These demo pages are inteded to showcase various AST implementations, explaining how they are done and showing the code used (focusing mostly on the tag definition), as well as including additional useful information.
 
 ### AST demo pages:
 
