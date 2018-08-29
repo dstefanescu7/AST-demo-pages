@@ -6,7 +6,9 @@
          #container {margin: 20px auto;}
          #left {width: 360px; padding: 20px; float: left;}
          #right {padding: 20px; overflow: auto;}
+         #apn_ad_slot_1 {position: absolute; visibility: visible; left: 400px; top: 400px; height: 100px; width: 150px; z-index: 200;}
          #apn_ad_slot_2 {position: absolute; visibility: visible; left: 20px; top: 300px; height: 100px; width: 150px; z-index: 200;}
+         #apn_ad_slot_3 {position: absolute; visibility: visible; left: 1100px; top: 200px; height: 100px; width: 150px; z-index: 200;}
          H1 {text-align: center;}
       </style>
       <meta charset="utf-8">
@@ -53,8 +55,8 @@
    <body>
       <br>
       <h1>Demo Page - Banner Roadblock AST Implementation</h1>
-         <h4>Creative 1</h4>
          <div id="apn_ad_slot_1">
+            <h4>Creative 1</h4>
             <script type="text/javascript">
                apntag.anq.push(function() {
                    //signal to script that this DOM element has been loaded and is ready to be populated with an ad
@@ -62,8 +64,8 @@
                });
             </script>
          </div>
-         <h4>Creative 2</h4>
          <div id="apn_ad_slot_2">
+            <h4>Creative 2</h4>
             <script type="text/javascript">
                apntag.anq.push(function() {
                    //signal to script that this DOM element has been loaded and is ready to be populated with an ad
@@ -71,8 +73,8 @@
                });
             </script>
          </div>
-         <h4>Creative 3</h4>
          <div id="apn_ad_slot_3">
+            <h4>Creative 3</h4>
             <script type="text/javascript">
                apntag.anq.push(function() {
                    //signal to script that this DOM element has been loaded and is ready to be populated with an ad
