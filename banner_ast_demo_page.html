@@ -71,7 +71,7 @@
          </div>
          <div id="right">
             <h4>Instructions</h4>
-            <p><b>Step 1:</b> you will need to create the APN object and load the AppNexus Javascript library. This part of the code can be pasted directly into your web page - no additional developer changes are required. This usually goes in the <i>head</i> of the of the page, but if you don't have access to that, you can put the entire tag in one code block in the <i>body</i>.</p>
+            <p><b>Step 1:</b> you will need to create the APN object and load the AppNexus JavaScript library. This part of the code can be copy-pasted directly into your web page - no additional developer changes are required. This usually goes in the <i>&lt;head&gt;</i> of the of the page, but if you don't have access to that, you can put the entire tag in one code block in the <i>&lt;body&gt;</i>.</p>
             <pre>
                <code>
                &lt;html&gt;
@@ -91,7 +91,7 @@
                    })();
                </code>
             </pre>
-            <p><b>Step 2:</b> this is the contination of the above step. Here you will need to make some adjustments in setting the global page options: you will need to set to correct member ID (the one in the example is 958, but this will need to be replaced with your own memebr seat) and define the page-wide targeting parameters.</p>
+            <p><b>Step 2:</b> this is the continuation of the above step. Here you will need to make some adjustments in setting the global page options: you will need to set to correct member ID (the one in the example is 958, but this will need to be replaced with your own member seat) and define the page-wide targeting parameters (there are none set in this example, but if you wan to set some, please see the documentation linked after the instructions).</p>
              <pre>
                <code>
                //push commands to loading queue, to allow for async loading
@@ -102,7 +102,7 @@
                    });
                </code>
              </pre>  
-            <p><b>Step 3:</b> now we will define the tags. Below you can see the code used to define the 2 tags implemented on this page through AST:</p>
+            <p><b>Step 3:</b> now we will define the tags. Below you can see the code used to define the two tags implemented on this page:</p>
             <pre>
                <code>  
                apntag.defineTag({
@@ -119,7 +119,7 @@
                });
                </code>
             </pre>
-            <p><b>Step 4:</b> right after the tags are defined, they will need to be loaded. This is the last part of the code which is usually found in the <i>head</i> section.</p>
+            <p><b>Step 4:</b> right after the tags are defined, they will need to be loaded. This is the last part of the code which is usually found in the <i>&lt;head&gt;</i> section.</p>
             <pre>
                <code>
                   apntag.loadTags();
@@ -128,7 +128,7 @@
                &lt;/head&gt;
                </code>
             </pre>
-            <p><b>Step 5:</b> now it's time to define the location of the placements, which will be coded in the <i>body</i> part of the webpage.</p>
+            <p><b>Step 5:</b> now it's time to define the location of the placements, which will be coded in the <i>&lt;body&gt;</i> part of the webpage.</p>
             <pre>
                <code>
                &lt;body&gt;
