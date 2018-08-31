@@ -74,8 +74,8 @@
             <p><b>Step 1:</b> you will need to create the APN object and load the AppNexus Javascript library. This part of the code can be pasted directly into your web page - no additional developer changes are required. This usually goes in the <i>head</i> of the of the page, but if you don't have access to that, you can put the entire tag in one code block in the <i>body</i>.</p>
             <pre>
                <code>
-               <html>
-               <head>
+               &lt;html&gt;
+               &lt;head&gt;
                    <script type="text/javascript">
                    //create empty apntag object if it doesn't exist
                    var apntag = apntag || {};
@@ -125,7 +125,7 @@
                   apntag.loadTags();
                   });
                   </script>
-               </head>
+               &lt;/head&gt;
                </code>
             </pre>
             <p><b>Step 5:</b> now it's time to define the location of the placements, which will be coded in the <i>body</i> part of the webpage.</p>
@@ -148,8 +148,8 @@
                        });
                        </script>
                    </div>
-               </body>
-               </html>
+               &lt;/body&gt;
+               &lt;/html&gt;
                </code>
             </pre>
             <p>You can find more detailed information about the implementation here: <a href="https://wiki.appnexus.com/display/sdk/Set+up+Placements+with+AST" target=_blank>AppNexus Wiki - Set up Placements with AST</a>.</p>
