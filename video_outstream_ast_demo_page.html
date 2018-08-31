@@ -62,10 +62,41 @@
       <h1>Demo Page - Video (Outstream) AST Implementation</h1>
       <br>
       <h4>Instructions</h4>
-      </p>Below you will see the code used to define the video tag implemented on this page through AST:</p>
-      <pre>
-      	<code>
-     	 apntag.defineTag({
+      <p><b>Step 1:</b> you will need to create the APN object and load the AppNexus JavaScript library. This part of the code can be copy-pasted directly into your web page - no additional developer changes are required. This usually goes in the <i>&lt;head&gt;</i> of the of the page, but if you don't have access to that, you can put the entire tag in one code block in the <i>&lt;body&gt;</i>.</p>
+            <pre>
+               <code>
+               &lt;html&gt;
+               &lt;head&gt;
+                   &lt;script type="text/javascript"&gt;
+                   //create empty apntag object if it doesn't exist
+                   var apntag = apntag || {};
+                   //create a queue on the apntag object       
+                   apntag.anq = apntag.anq || [];
+     
+                   //load ast.js - async
+                   (function() {
+                      var d = document, e = d.createElement('script'), p = d.getElementsByTagName('head')[0];
+                      e.type = 'text/javascript';  e.async = true;
+                      e.src = '//acdn.adnxs.com/ast/ast.js';
+                      p.insertBefore(e, p.firstChild);
+                   })();
+               </code>
+            </pre>
+            <p><b>Step 2:</b> this is the continuation of the above step. Here you will need to make some adjustments in setting the global page options: you will need to set to correct member ID (the one in the example is 958, but this will need to be replaced with your own member seat) and define the page-wide targeting parameters (there are none set in this example, but if you want to set some, please see the documentation linked after the instructions).</p>
+             <pre>
+               <code>
+               //push commands to loading queue, to allow for async loading
+               apntag.anq.push(function() {
+               //set global page options
+               apntag.setPageOpts({
+                   member: 958
+                   });
+               </code>
+             </pre>  
+            <p><b>Step 3:</b> now we will define the tag. Below you can see the code used to define the tag implemented on this page:</p>
+            <pre>
+               <code>  
+	 apntag.defineTag({
 	    tagId: 12886207,
 	    allowedFormats: ['video', 'banner'],
 	    sizes: [[1, 1],[480, 270]],
@@ -88,8 +119,33 @@
 		}
 	      }
       	   });
-      	</code>
-      </pre>
+               </code>
+            </pre>
+            <p><b>Step 4:</b> right after the tag is defined, it will need to be loaded. This is the last part of the code which is usually found in the <i>&lt;head&gt;</i> section.</p>
+            <pre>
+               <code>
+                  apntag.loadTags();
+                  });
+                  &lt;/script&gt;
+               &lt;/head&gt;
+               </code>
+            </pre>
+            <p><b>Step 5:</b> now it's time to define the location of the placement, which will be coded in the <i>&lt;body&gt;</i> part of the webpage.</p>
+            <pre>
+               <code>
+               &lt;body&gt;
+                   &lt;div id="apn_ad_slot_1"&gt;
+                       &lt;script type="text/javascript"&gt;
+                       apntag.anq.push(function() {
+                           //signal to script that this DOM element has been loaded and is ready to be populated with an ad
+                           apntag.showTag('apn_ad_slot_1');
+                       });
+                       &lt;/script&gt;
+                   &lt;/div&gt;
+               &lt;/body&gt;
+               &lt;/html&gt;
+               </code>
+            </pre>
       <h4>Outstream AST tag</h4>
       <div id="apn_ad_slot_1">
          <script type="text/javascript">
@@ -100,7 +156,7 @@
          </script>
       </div>
       <br>
-      <p>Just like for banner, before defining the tag, two other steps (creating the APN object & loading the AppNexus JavaScript library and setting the global page options) need to be implemented in order for this to work. Please follow the implementation documentation which can be found here: <a href="https://wiki.appnexus.com/display/sdk/Set+up+Placements+with+AST" target=_blank>AppNexus Wiki - Set up Placements with AST</a>. After defining the tags as instructed, you will need to load them and then define their location on the page. All of these steps are detailed in the aforementioned Wiki page.</p>
+      <p>You can find more detailed information about the implementation here: <a href="https://wiki.appnexus.com/display/sdk/Set+up+Placements+with+AST" target=_blank>AppNexus Wiki - Set up Placements with AST</a>.</p>
       <p>For further AST API references, you can also refer to the following documentation: <a href="https://wiki.appnexus.com/display/console/AST+API+Reference" target=_blank>AppNexus Wiki - AST API Reference</a>.</p>
       <p>Additionally, for video, it's also important to check the <a href="https://wiki.appnexus.com/display/console/Outstream+Video+Player+Options" target=_blank>Outstream Video Player Options</a> to see how the player can be set up and what kind of options are available.</p>
       <p>Further things to note:</p>
