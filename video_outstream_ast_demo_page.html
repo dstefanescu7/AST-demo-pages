@@ -96,29 +96,29 @@
             <p><b>Step 3:</b> now we will define the tag. Below you can see the code used to define the tag implemented on this page:</p>
             <pre>
                <code>  
-	 apntag.defineTag({
-	    tagId: 12886207,
-	    allowedFormats: ['video', 'banner'],
-	    sizes: [[1, 1],[480, 270]],
-	    targetId: 'apn_ad_slot_1',
-	    rendererOptions: {
-	       "playerTechnology": ["html5", "flash"],
-	       "adText": "Ad",
-	       "showMute": true,
-	       "showVolume": true,
-	       "nonViewableBehavior": "pause",
-	       "showProgressBar": true,
-	       "autoInitialSize": false,
-	       "allowFullscreen": true,
-	       "skippable": {
-	          "videoThreshold": 15,
-		  "videoOffset": 5,
-		  "skipLocation": "top-left",
-		  "skipText": "Video can be skipped in %%TIME%% seconds",
-		  "skipButtonText": "SKIP"
-		}
-	      }
-      	   });
+		 apntag.defineTag({
+		    tagId: 12886207,
+		    allowedFormats: ['video', 'banner'],
+		    sizes: [[1, 1],[480, 270]],
+		    targetId: 'apn_ad_slot_1',
+		    rendererOptions: {
+		       "playerTechnology": ["html5", "flash"],
+		       "adText": "Ad",
+		       "showMute": true,
+		       "showVolume": true,
+		       "nonViewableBehavior": "pause",
+		       "showProgressBar": true,
+		       "autoInitialSize": false,
+		       "allowFullscreen": true,
+		       "skippable": {
+			  "videoThreshold": 15,
+			  "videoOffset": 5,
+			  "skipLocation": "top-left",
+			  "skipText": "Video can be skipped in %%TIME%% seconds",
+			  "skipButtonText": "SKIP"
+			}
+		      }
+		   });
                </code>
             </pre>
             <p><b>Step 4:</b> right after the tag is defined, it will need to be loaded. This is the last part of the code which is usually found in the <i>&lt;head&gt;</i> section.</p>
