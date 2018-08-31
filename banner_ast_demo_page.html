@@ -124,30 +124,30 @@
                <code>
                   apntag.loadTags();
                   });
-                  </script>
+                  &lt;/script&gt;
                &lt;/head&gt;
                </code>
             </pre>
             <p><b>Step 5:</b> now it's time to define the location of the placements, which will be coded in the <i>body</i> part of the webpage.</p>
             <pre>
                <code>
-               <body>
-                   <div id="apn_ad_slot_1">
-                       <script type="text/javascript">
+               &lt;body&gt;
+                   &lt;div id="apn_ad_slot_1"&gt;
+                       &lt;script type="text/javascript"&gt;
                        apntag.anq.push(function() {
                            //signal to script that this DOM element has been loaded and is ready to be populated with an ad
                            apntag.showTag('apn_ad_slot_1');
                        });
-                       </script>
-                   </div>
-                   <br>
-                   <div id="apn_ad_slot_2">
-                       <script type="text/javascript">
+                       &lt;/script&gt;
+                   &lt;/div&gt;
+                   &lt;br&gt;
+                   &lt;div id="apn_ad_slot_2"&gt;
+                       &lt;script type="text/javascript"&gt;
                        apntag.anq.push(function() {
                            apntag.showTag('apn_ad_slot_2');
                        });
-                       </script>
-                   </div>
+                       &lt;/script&gt;
+                   &lt;/div&gt;
                &lt;/body&gt;
                &lt;/html&gt;
                </code>
