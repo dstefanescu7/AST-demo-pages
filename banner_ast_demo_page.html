@@ -160,15 +160,15 @@
                </code>
             </pre>
             <p>You can find more detailed information about the implementation here: <a href="https://wiki.appnexus.com/display/sdk/Set+up+Placements+with+AST" target=_blank>AppNexus Wiki - Set up Placements with AST</a>.</p>
-            <p>For further AST API references, you can also refer to the following documentation: <a href="https://wiki.appnexus.com/display/console/AST+API+Reference" target=_blank>AppNexus Wiki - AST API Reference</a>.</p>
+            <p>For further AST API references, you can also refer to the following documentation: <a href="https://wiki.appnexus.com/display/sdk/AST+API+Reference" target=_blank>AppNexus Wiki - AST API Reference</a>.</p>
             <p>Further things to note:</p>
             <ul>
                <li>Setting <i>allowedFormats</i> on AST is optional; if it's set, it will override the media types assigned on the placements' settings in Console.</li>
                <li>The media types allowed on the <i>allowedFormats</i> field are banner, video, native and audio. If you want a different format than these on the placements, then don't set the field and set the media type on the placement in Console.</li>
-               <li>It is possible to have several formats on the same placement (superauction).</li>
-               <li>As it can be seen in the above code, placement 12992714 has <i>enableSafeFrame: true</i>. This means it enables the SafeFrame iFrame. More information on this can be found here: <a href ="https://wiki.appnexus.com/display/console/SafeFrame+API+Reference" target=_blank>AppNexus Wiki - SafeFrame API Reference</a>.</li>
+               <li>It is possible to have several formats on the same placement (this is called superauction).</li>
+               <li>As it can be seen in the above code, placement 12992714 has <i>enableSafeFrame: true</i>. This means it enables the SafeFrame iFrame which gives publisher more control. More information on this can be found here: <a href ="https://wiki.appnexus.com/display/sdk/SafeFrame+API+Reference" target=_blank>AppNexus Wiki - SafeFrame API Reference</a>.</li>
             </ul>
-            <p>Finally, regularly checking on the <a href="https://wiki.appnexus.com/display/console/AST+Release+History" target=_blank>AST release history</a> is encouaged so that you can see the latest releases and adjust the code accordingly if needed (due to breaking changes, for example).</p>
+            <p>Finally, regularly checking on the <a href="https://wiki.appnexus.com/display/sdk/AST+Release+History" target=_blank>AST release history</a> is encouaged so that you can see the latest releases and adjust the code accordingly if needed (due to breaking changes, for example).</p>
             <br>
             <p>With the help of AST, roadblock can also be achieved. Please see this page for the setup: <a href ="https://dstefanescu7.github.io/AST-demo-pages/banner_roadblock_ast_demo_page.html" target=_blank>Demo Page- Banner Roadblock AST Implementation</a>.
          </div>
