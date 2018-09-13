@@ -157,16 +157,16 @@
       </div>
       <br>
       <p>You can find more detailed information about the implementation here: <a href="https://wiki.appnexus.com/display/sdk/Set+up+Placements+with+AST" target=_blank>AppNexus Wiki - Set up Placements with AST</a>.</p>
-      <p>For further AST API references, you can also refer to the following documentation: <a href="https://wiki.appnexus.com/display/console/AST+API+Reference" target=_blank>AppNexus Wiki - AST API Reference</a>.</p>
+      <p>For further AST API references, you can also refer to the following documentation: <a href="https://wiki.appnexus.com/display/sdk/AST+API+Reference" target=_blank>AppNexus Wiki - AST API Reference</a>.</p>
       <p>Additionally, for video, it's also important to check the <a href="https://wiki.appnexus.com/display/console/Outstream+Video+Player+Options" target=_blank>Outstream Video Player Options</a> to see how the player can be set up and what kind of options are available.</p>
       <p>Further things to note:</p>
       <ul>
 	 <li>Setting <i>allowedFormats</i> on AST is optional; if it's set, it will override the media types assigned on the placements' settings in Console.</li>
-         <li>The tags have to be within a friendly iFrame.</li>
-         <li>You can add multiple sizes and media types on the tags so that it will allow banner to serve on the same placement, for example, if there's no video demand available. However, this is not support by all external bidders - so far only DBM, Adcom and comcast are supporting it.</li>
+         <li>The tags have to be within a friendly iFrame since the Outstream iFrame is collapsed and will only expand as the user scrolls towards it. The expansion is only possible with a friendly iFrame, otherwise the iFrame doesn't receive the information that the user is there.</li>
+         <li>You can add multiple sizes and media types on the tags so that, for example, it will allow banner to serve on the same placement, if there's no video demand available. However, this is not supported by all external bidders - please contact your AppNexus Account Manager for details on which bidders support this.</li>
          <li>Even if the above is not supported, it's still good to add both video and banner media types, with video as first option, since if it's not supported, then only the first option will be taken into consideration.</li>
       </ul>
-      <p>Finally, regularly checking on the <a href="https://wiki.appnexus.com/display/console/AST+Release+History" target=_blank>AST release history</a> is encouaged so that you can see the latest releases and adjust the code accordingly if needed (due to breaking changes, for example).</p>
+      <p>Finally, regularly checking on the <a href="https://wiki.appnexus.com/display/sdk/AST+Release+History" target=_blank>AST release history</a> is encouaged so that you can see the latest releases and adjust the code accordingly if needed (due to breaking changes, for example).</p>
       <footer style="color:#999;text-align:center">
          <i><small>© 2018 AppNexus Inc. All Rights Reserved</small></i>
       </footer>
