@@ -4,9 +4,9 @@ These demo pages are inteded to showcase various AST implementations, explaining
 
 ### AST demo pages:
 
-- <a href="https://dstefanescu7.github.io/AST-demo-pages/banner_ast_demo_page.html" target="_blank">Banner demo page]</a>
-- <a href="https://dstefanescu7.github.io/AST-demo-pages/video_outstream_ast_demo_page.html" target="_blank">Video (outstream) demo page</a>
-- Native demo page (to be added) - for now there's <a href="https://appnexus.github.io/native-ad-examples/" target="_blank">this</a>
+- <a href="https://dstefanescu7.github.io/AST-demo-pages/banner_ast_demo_page.html" target=_blank>Banner demo page</a>
+- <a href="https://dstefanescu7.github.io/AST-demo-pages/video_outstream_ast_demo_page.html" target=_blank>Video (outstream) demo page</a>
+- Native demo page (to be added) - for now there's <a href="https://appnexus.github.io/native-ad-examples/" target=_blank>this</a>
 
 ### Support or contact
 
