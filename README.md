@@ -7,6 +7,7 @@ These demo pages are inteded to showcase various AST implementations, explaining
 - [Banner demo page](https://dstefanescu7.github.io/AST-demo-pages/banner_ast_demo_page.html)
 - [Video (outstream) demo page](https://dstefanescu7.github.io/AST-demo-pages/video_outstream_ast_demo_page.html)
 - Native demo page (to be added) - for now there's [this](https://appnexus.github.io/native-ad-examples/)
+- [Banner Infinite Scroll demo page](https://dstefanescu7.github.io/AST-demo-pages/banner_ast_infinite_scroll_demo_page.html)
 
 ### Support or contact
 
