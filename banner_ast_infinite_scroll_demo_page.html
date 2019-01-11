@@ -372,11 +372,10 @@
                 <p>For further AST API references, you can also refer to the following documentation: <a href="https://wiki.appnexus.com/display/sdk/AST+API+Reference" target=_blank>AppNexus Wiki - AST API Reference</a>.</p>
                 <p>Further things to note:</p>
                 <ul>
-                    <li>Depending on your environment, you may be able to change your approach to Step 1 above by choosing to call <a href="https://wiki.appnexus.com/display/sdk/DefineTag">apntag.defineTag()</a> + <a href="https://wiki.appnexus.com/display/sdk/loadTags">apntag.loadTags()</a> multiple times for 1. Initial page load ads and 2. For lazy load ads such that
                     <li>This can be done for multiple ads. Multiple ads can have <a href="https://wiki.appnexus.com/display/sdk/ShowTag">showTag()</a> called after the DOM has loaded assuming you have multiple ads that you'd like to lazy load.</li>
+                    <li>The amount of lazy loaded tags defined on the page and fired at once can cause timeouts on the auction side. Start with a lower (5-6) number of lazy loaded ads fired at once and ensure you see fill on your placements before releasing.</li>
                     <li>To maintain viewability statistics, ensure that the ad is lazy loaded as close to being in view as possible.</li>
                     <li>If targeting has changed, then fire a <a href="https://wiki.appnexus.com/display/sdk/ClearRequest">clearRequest()</a> call first, set the targeting again and then fire <a href="https://wiki.appnexus.com/display/sdk/ShowTag">showTag()</a> when the ad is close to being in view.</li>
-                    <li>The amount of lazy loaded tags defined on the page and fired at once can cause timeouts on the auction side. Start with a lower (5-6) number of lazy loaded ads fired at once and ensure you see fill on your placements before releasing.</li>
                 </ul>
                 <p>As a reminder, regularly checking on the <a href="https://wiki.appnexus.com/display/sdk/AST+Release+History" target=_blank>AST release history</a> is encouaged so that you can see the latest releases and adjust the code accordingly if needed (due to breaking changes, for example).</p>
                 <br>
