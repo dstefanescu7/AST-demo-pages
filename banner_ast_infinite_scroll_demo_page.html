@@ -295,7 +295,9 @@
                 <p><b>Step 3:</b> This step is highly nuanced and depends on the results you desire, but for this example we'll set up a script to fire <a href="https://wiki.appnexus.com/display/sdk/ShowTag">showTag()</a>('apn_ad_slot_2'); when the div <i>scrolldiv</i> is in view. Once it's detected as in view and the <a href="https://wiki.appnexus.com/display/sdk/ShowTag"><i>showTag</i></a> method is fired which tells AST that the placement has been defined and it's time to load an ad in the div. The impression is also marked as transacted at this time and a notification is sent to AppNexus to track the impression.</p> <br/><b>Note:</b> Unlike Option 1, you will notice the <a href="https://wiki.appnexus.com/display/sdk/DefineTag">apntag.defineTag()</a> call, loadAds() call, and <a href="https://wiki.appnexus.com/display/sdk/ShowTag">showTag()</a> call all being made within the event to detect if the ad unit is in view (see VisibilityMonitor instantiation below).
                 <pre>
               <code>
-        function VisibilityMonitor(element, showfn, hidefn) {
+    //boolean used to load ad only once
+    var nevershown
+    function VisibilityMonitor(element, showfn, hidefn) {
         var isshown = false;
 
         function check() {
@@ -338,8 +340,9 @@
     VisibilityMonitor(
         document.getElementById('scrolldiv'),
         function() {
+            if(nevershown != false){
             apntag.anq.push(function() {
-                //set lazy loaded page options
+                //set global page options
                 apntag.setPageOpts({
                     member: 958
                 });
@@ -354,11 +357,11 @@
                 //start loading tags
                 apntag.loadTags();
                 apntag.showTag('apn_ad_slot_2');
+                nevershown = false;
             });
-            console.log('div in view!');
+        }
         },
         function() {
-            console.log('div out of view');
         }
     );
     </script>
@@ -459,10 +462,8 @@
                 nevershown = false;
             });
         }
-            console.log('div in view');
         },
         function() {
-            console.log('div out of view');
         }
     );
     </script>
