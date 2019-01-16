@@ -145,12 +145,12 @@
         </div>
         <div id="right">
             <h4>Instructions</h4>
-            <p>Assuming you have followed the steps to <a href="https://dstefanescu7.github.io/AST-demo-pages/banner_ast_demo_page.html">implement AST banners</a>, you will need to add a new ad unit OR choose and existing ad unit that will be 'lazy loaded' after the DOM has loaded.
+            <p>Assuming you have followed the steps to <a href="https://dstefanescu7.github.io/AST-demo-pages/banner_ast_demo_page.html">implement AST banners</a>, you will need to add a new ad unit OR choose an existing ad unit that will be 'lazy loaded' after the DOM has loaded.
                 <br /><br />
                 <b>As a publisher you have two options: </b>
                 <ol>
-                    <li><a href="#"><div id='optone' onclick='defaultOpen()'><b>Option 1:</b></div></a>The lazy loaded ad will be defined in <a href="https://wiki.appnexus.com/display/sdk/DefineTag">apntag.defineTag()</a> within the same <i>apntag.anq.push</i> call as non-lazy loaded ads on page load, when <a href="https://wiki.appnexus.com/display/sdk/loadTags">apntag.loadTags()</a> is called the initial ad request will be made for <i>all</i> ads, including lazy loaded ones. Lazy loaded ads will be stored and nly until step 3 when <a href="https://wiki.appnexus.com/display/sdk/ShowTag">showTag()</a> is called on lazy loaded elements will the ads be rendered and tracked as viewable impressions.</li>
-                    <li><a href="#"><div id='opttwo' onclick='secondaryOpen()'><b>Option 2:</b></div></a>The lazy loaded ad will be defined in its own <a href="https://wiki.appnexus.com/display/sdk/DefineTag">apntag.defineTag()</a> call when a given user behavior occurs (in this example when it's brought into view). In this option, you can call <a href="https://wiki.appnexus.com/display/sdk/DefineTag">apntag.defineTag()</a>, <a href="https://wiki.appnexus.com/display/sdk/loadTags">apntag.loadTags()</a>, and then <a href="https://wiki.appnexus.com/display/sdk/ShowTag">showTag()</a> when the user views the div (or desired behavior). </li>
+                    <li><a href="#"><div id='optone' onclick='defaultOpen()'><b>Option 1:</b></div></a>The lazy loaded ad will be defined in the <a href="https://wiki.appnexus.com/display/sdk/DefineTag">apntag.defineTag()</a> call within the same <i>apntag.anq.push</i> call as non-lazy loaded ads that load on page load. When <a href="https://wiki.appnexus.com/display/sdk/loadTags">apntag.loadTags()</a> is called the initial ad request will be made for <i>all</i> ads, including lazy loaded ones. Lazy loaded ads will be stored and will only be displayed and tracked for viewable impressions on step 3 when <a href="https://wiki.appnexus.com/display/sdk/ShowTag">showTag()</a> is called at the discretion of the developer.</li>
+                    <li><a href="#"><div id='opttwo' onclick='secondaryOpen()'><b>Option 2:</b></div></a>The lazy loaded ad will be defined in its own <a href="https://wiki.appnexus.com/display/sdk/DefineTag">apntag.defineTag()</a> call when a given user behavior occurs (in this example when it's brought into view). In this option, you can call <a href="https://wiki.appnexus.com/display/sdk/DefineTag">apntag.defineTag()</a>, <a href="https://wiki.appnexus.com/display/sdk/loadTags">apntag.loadTags()</a>, and then <a href="https://wiki.appnexus.com/display/sdk/ShowTag">showTag()</a> when the user views the div (or desired behavior). This approach fires a subsequent ad request for the lazy loaded ads when the ad is closer to being viewed. This contrasts with Option 1 which fires the ad request for lazy loaded ads on page load.</li>
                 </ol>
             </p>
             <div class="tab">
@@ -166,7 +166,7 @@
                     apntag.setPageOpts({
                         member: 958
                     });
-                    //define ad tags
+                    //define page load ad tag
                     apntag.defineTag({
                         tagId: 12886199,
                         sizes: [
@@ -174,8 +174,8 @@
                         ],
                         targetId: 'apn_ad_slot_1'
                     });
+                    //define lazy loaded ad tag; to be loaded after page load
                     apntag.defineTag({
-                        enableSafeFrame: true,
                         tagId: 12992714,
                         sizes: [
                             [728, 90]
@@ -187,7 +187,7 @@
                 });
                </code>
             </pre>
-                <p><b>Step 2:</b> Define the divs, noting that the placement that will have the ad loaded within it later on does not have a <a href="https://wiki.appnexus.com/display/sdk/ShowTag">showTag()</a> call just yet. Like all tags, this lazy loaded DIV should have an id of the same value as set in the 'targetId' property in Step 1. <br/><br/><b>Also note</b> that this is just an example, these divs will likely be in separate locations in your HTML template.</p>
+                <p><b>Step 2:</b> Define the divs, noting that the placement/div that will have the ad loaded within it later on does not have a <a href="https://wiki.appnexus.com/display/sdk/ShowTag">showTag()</a> call just yet. Like all tags, this lazy loaded DIV should have an id of the same value as set in the 'targetId' property in Step 1. <br/><br/><b>Also note</b> that this is just an example, these divs will likely be in separate locations in your HTML template.</p>
                 <pre>
               <code>
                 &lt;div id="apn_ad_slot_1"&gt;
@@ -201,7 +201,7 @@
                 &lt;/div&gt;
               </code>
             </pre>
-                <p><b>Step 3:</b> This step is highly nuanced and depends on the results you desire, but for this example we'll set up a script to fire <i><a href="https://wiki.appnexus.com/display/sdk/ShowTag"><i>showTag</i></a>('apn_ad_slot_2');</i> when the div <i>scrolldiv</i> is in view. Once it's detected as in view and the <a href="https://wiki.appnexus.com/display/sdk/ShowTag">showTag()</a> method is fired which tells AST that the placement has been defined and it's time to load an ad in the div. The impression is also marked as transacted at this time and a notification is sent to AppNexus to track the impression.</p>
+                <p><b>Step 3:</b> This step is highly nuanced and depends on the results you desire, but for this example we'll set up a script to fire <i><a href="https://wiki.appnexus.com/display/sdk/ShowTag"><i>showTag</i></a>('apn_ad_slot_2');</i> when the div <i>scrolldiv</i> is in view. Once it's detected as in view by our sciprt and the <a href="https://wiki.appnexus.com/display/sdk/ShowTag">showTag()</a> method is fired, the method tells AST that the placement is being showed and it's time to load the ad in the div. The impression is also marked as transacted at this time and a notification is sent to AppNexus to track the impression.</p>
                 <pre>
               <code>
     function VisibilityMonitor(element, showfn, hidefn) {
@@ -259,7 +259,6 @@
                 <p>For further AST API references, you can also refer to the following documentation: <a href="https://wiki.appnexus.com/display/sdk/AST+API+Reference" target=_blank>AppNexus Wiki - AST API Reference</a>.</p>
                 <p>Further things to note:</p>
                 <ul>
-                    <li>Depending on your environment, you may be able to change your approach to Step 1 above by choosing to call <a href="https://wiki.appnexus.com/display/sdk/DefineTag">apntag.defineTag()</a> + <a href="https://wiki.appnexus.com/display/sdk/loadTags">apntag.loadTags()</a> multiple times for 1. Initial page load ads and 2. For lazy load ads such that
                     <li>This can be done for multiple ads. Multiple ads can have <a href="https://wiki.appnexus.com/display/sdk/ShowTag">showTag()</a> called after the DOM has loaded assuming you have multiple ads that you'd like to lazy load.</li>
                     <li>To maintain viewability statistics, ensure that the ad is lazy loaded as close to being in view as possible.</li>
                     <li>If targeting has changed, then fire a <a href="https://wiki.appnexus.com/display/sdk/ClearRequest">clearRequest()</a> call first, set the targeting again and then fire <a href="https://wiki.appnexus.com/display/sdk/ShowTag">showTag()</a> when the ad is close to being in view.</li>
@@ -292,7 +291,7 @@
                 &lt;/div&gt;
               </code>
             </pre>
-                <p><b>Step 3:</b> This step is highly nuanced and depends on the results you desire, but for this example we'll set up a script to fire <a href="https://wiki.appnexus.com/display/sdk/ShowTag">showTag()</a>('apn_ad_slot_2'); when the div <i>scrolldiv</i> is in view. Once it's detected as in view and the <a href="https://wiki.appnexus.com/display/sdk/ShowTag"><i>showTag</i></a> method is fired which tells AST that the placement has been defined and it's time to load an ad in the div. The impression is also marked as transacted at this time and a notification is sent to AppNexus to track the impression.</p> <br/><b>Note:</b> Unlike Option 1, you will notice the <a href="https://wiki.appnexus.com/display/sdk/DefineTag">apntag.defineTag()</a> call, loadAds() call, and <a href="https://wiki.appnexus.com/display/sdk/ShowTag">showTag()</a> call all being made within the event to detect if the ad unit is in view (see VisibilityMonitor instantiation below).
+                <p><b>Step 3:</b> This step is highly nuanced and depends on the results you desire, but for this example we'll set up a script to fire <a href="https://wiki.appnexus.com/display/sdk/DefineTag">apntag.defineTag()</a>, <a href="https://wiki.appnexus.com/display/sdk/loadTags">apntag.loadTags()</a>, and then <a href="https://wiki.appnexus.com/display/sdk/ShowTag">showTag</a>('apn_ad_slot_2'); when the div <i>scrolldiv</i> is in view. Once it's detected as in view and the <a href="https://wiki.appnexus.com/display/sdk/ShowTag"><i>showTag</i></a> method is fired which tells AST that the placement has been defined and it's time to load an ad in the div. The impression is also marked as transacted at this time and a notification is sent to AppNexus to track the impression.</p> <br/><b>Note:</b> Unlike Option 1, you will notice the <a href="https://wiki.appnexus.com/display/sdk/DefineTag">apntag.defineTag()</a> call, <a href="https://wiki.appnexus.com/display/sdk/loadTags">apntag.loadTags()</a> call, and <a href="https://wiki.appnexus.com/display/sdk/ShowTag">showTag()</a> call all being made within the event to detect if the ad unit is in view (see VisibilityMonitor instantiation below).
                 <pre>
               <code>
     //boolean used to load ad only once
@@ -347,7 +346,6 @@
                     member: 958
                 });
                 apntag.defineTag({
-                    enableSafeFrame: true,
                     tagId: 12992714,
                     sizes: [
                         [728, 90]
