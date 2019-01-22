@@ -11,4 +11,4 @@ These demo pages are inteded to showcase various AST implementations, explaining
 
 ### Support or contact
 
-If you have any questions about these pages or would like to submit feedback, please feel free to contact Diana Stefanescu over Slack or e-mail (dstefanescu@appnexus.com).
+If you have any questions about these pages or would like to submit feedback, please feel free to contact Diana Stefanescu over Slack or e-mail (diana.stefanescu@xandr.com).
