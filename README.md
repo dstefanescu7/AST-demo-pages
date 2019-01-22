@@ -1,6 +1,6 @@
 ## Welcome to the AST demo pages project
 
-These demo pages are inteded to showcase various AST implementations, explaining how they are done and showing the code used, as well as including additional useful information.
+These demo pages are inteded to showcase various AST implementations, explaining how they are done and showing the code used, as well as including additional useful information. Right now they are only for internal use; they will be made client-facing in the future.
 
 ### AST demo pages:
 
@@ -11,4 +11,4 @@ These demo pages are inteded to showcase various AST implementations, explaining
 
 ### Support or contact
 
-If you have any questions about these pages or would like to submit feedback, please feel free to contact Diana Stefanescu over Slack or e-mail (diana.stefanescu@xandr.com).
+If you have any questions about these pages or would like to submit feedback, please feel free to reach out in #ast-demo-pages Slack channel or contact Diana Stefanescu over e-mail (diana.stefanescu@xandr.com) or Slack.
