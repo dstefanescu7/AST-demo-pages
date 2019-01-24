@@ -1,0 +1,103 @@
+/*
+******************
+COMMON
+******************
+*/
+
+@font-face {
+    font-family: "akkurat";
+    src: url("../font/akkurat.ttf");
+}
+
+html,body{margin:0;padding:0;width:100%;height:100%;}
+body{font-family:"akkurat", "comic sans ms";overflow:hidden;}
+
+/*
+******************
+HEADER
+******************
+*/
+#header{background: #ff8f1c;background: -moz-linear-gradient(left,  #ff8f1c 0%, #f5be5d 100%);background: -webkit-gradient(linear, left top, right top, color-stop(0%,#ff8f1c), color-stop(100%,#f5be5d));background: -webkit-linear-gradient(left,  #ff8f1c 0%,#f5be5d 100%);background: -o-linear-gradient(left,  #ff8f1c 0%,#f5be5d 100%);background: -ms-linear-gradient(left,  #ff8f1c 0%,#f5be5d 100%);background: linear-gradient(to right,  #ff8f1c 0%,#f5be5d 100%);filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff8f1c', endColorstr='#f5be5d',GradientType=1 );padding:20px;box-shadow:0 0 5px rgba(0,0,0,0.2);position:relative;z-index:2;}
+.logo{background:url(../img/logo.png) center top no-repeat;width:300px;height:90px;}
+
+/*
+******************
+MAIN
+******************
+*/
+
+#dtable{display:table;width:100%;border:0 none;padding:0;}
+.dtd{display:table-cell;vertical-align:middle;}
+
+/*
+******************
+MAIN :: NAV
+******************
+*/
+
+.dtd:first-child{width:300px;background:#ddd;vertical-align:top;}
+
+#nav{padding:0;overflow:auto;position:relative;box-shadow:0 0 5px rgba(0,0,0,0.2);}
+
+#nav .item{height:60px;overflow:hidden;position:relative;color:#212121;background:#eee;width:100%;
+	backface-visibility: hidden;-moz-backface-visibility: hidden;-webkit-backface-visibility: hidden;-o-backface-visibility: hidden;-ms-backface-visibility: hidden;
+	transform-style: preserve-3d;-moz-transform-style: preserve-3d;-webkit-transform-style: preserve-3d;-o-transform-style: preserve-3d;-ms-transform-style: preserve-3d;
+	transform: rotateX(-90deg);-moz-transform: rotateX(-90deg);-webkit-transform: rotateX(-90deg);-o-transform: rotateX(-90deg);-ms-transform: rotateX(-90deg);
+	transform-origin: 0 0 0;-moz-transform-origin: 0 0 0;-webkit-transform-origin: 0 0 0;-o-transform-origin: 0 0 0;-ms-transform-origin: 0 0 0;
+	transition: transform 1s ease, color .2s ease;-moz-transition: -moz-transform 1s ease;-webkit-transition: -webkit-transform 1s ease;-o-transition: -o-transform 1s ease;-ms-transition: -ms-transform 1s ease;
+}
+#nav .item_anim{transform: rotateX(0deg);-moz-transform: rotateX(0deg);-webkit-transform: rotateX(0deg);-o-transform: rotateX(0deg);-ms-transform: rotateX(0deg);}
+
+#nav .item.color1{background:#f7f7f7;}
+#nav .item.color2{background:#fff;}
+#nav .item.selected, #nav .item:hover{color:#ff8700;}
+
+#nav .item .lbt{display:table;height:100%;width:100%;}
+#nav .item .lbc{display:table-cell;vertical-align: middle;}
+#nav .item .label{display:inline-block;padding:0 20px;font-size:16px;line-height:20px;}
+#nav .item .label span{font-weight: bold;}
+
+#nav_btn{position:absolute;width:36px;height:60px;background:url(../img/nav_btn.png) center center no-repeat;top:0;left:0;display:none;}
+
+#nav3{position:absolute;top:60px;left:0;width:100%;height:auto;display:none;background:#ddd;}
+
+.nav3 #nav3{display:block;}
+
+/*
+******************
+MAIN :: CONTENTS
+******************
+*/
+
+.content{display:none;}
+.content.selected{display:block;}
+
+.content iframe{display:block;border:0 none;margin:0;padding:0;width:100%;height:100%;}
+
+h1{font-weight:normal;font-size:110px;line-height:140px;text-align:center;color:#212121;margin:0;padding:0;}
+h1 span{display:block;font-size:47px;line-height:70px;color:#353535;}
+h1, h1 span{transition:font-size .2s ease, line-height .2s ease;}
+
+/*
+******************
+RESPONSIVE
+******************
+*/
+
+@media screen and (max-width: 980px){
+	.dtd{vertical-align: top;}
+	.dtd:first-child{display:none;}
+	#header{padding:10px;}
+	.logo{height:40px;margin:auto;background-position:center bottom;}
+
+	h1{font-size:90px;line-height:110px;padding:40px 0}
+	h1 span{font-size:38px;line-height:60px;}
+	#content_default{overflow:auto;}
+	#nav2{padding:0 20px 20px 20px;}
+	#nav2 #nav{height:auto !important;}
+}
+
+@media screen and (max-width: 600px){
+	h1{font-size:50px;line-height:70px;}
+	h1 span{font-size:21px;line-height:26px;}
+}
