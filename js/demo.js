@@ -4,7 +4,7 @@
 
     function Nav(is2){
 
-        var thatNav = this;
+        var thatNav = this ;
         
         var init = function(){
             div = document.getElementById('nav');
