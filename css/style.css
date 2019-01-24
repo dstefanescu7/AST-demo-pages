@@ -53,6 +53,8 @@ NAV
 
 .nav_fixed #nav{position:fixed;top:0;}
 
+#nav_btn{position:absolute;width:36px;height:60px;background:url(../img/nav_btn.png) center center no-repeat;top:0;left:0;display:none;}
+
 /*
 ******************
 CONTENT
