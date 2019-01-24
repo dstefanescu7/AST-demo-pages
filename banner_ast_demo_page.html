@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8" />
+      <title>Banner</title>
+      <link rel="stylesheet" href="css/style.css" />
+      <link rel="stylesheet" href="css/monokai-sublime.css" />
+      <script type="text/javascript">
+         //create empty apntag object if it doesn't exist
+         var apntag = apntag || {};
+         //create a queue on the apntag object
+         apntag.anq = apntag.anq || [];
+         //load ast.js - async
+         (function() {
+            var d = document, e = d.createElement('script'), p = d.getElementsByTagName('head')[0];
+            e.type = 'text/javascript';  e.async = true;
+            e.src = '//acdn.adnxs.com/ast/ast.js';
+            p.insertBefore(e, p.firstChild);
+         })();
+         //push commands to loading queue, to allow for async loading
+         apntag.anq.push(function(){
+            //set global page options
+            apntag.setPageOpts({
+               member: 958
+            });
+            //define ad tags
+            apntag.defineTag({
+               tagId: 12886199,
+               sizes: [[300,250]],
+               targetId: 'apn_ad_slot_1'
+            });
+            apntag.defineTag({
+               enableSafeFrame: true,
+               tagId: 12992714,
+               sizes: [[300,250],[738,90]],
+               targetId: 'apn_ad_slot_2'
+            });
+            //start loading tags
+            apntag.loadTags();
+         });
+      </script>
+   </head>
+   <body>
+
+      <div id="header">
+         <div class="logo"></div>
+      </div>
+
+      <div class="site">
+
+         <div class="dtable">
+            <div class="dtd">
+               <div id="nav"><div class="padd">
+                  <a href="banner_ast_demo_page.html" class="item selected" data-content="banner_ast_demo_page">
+                     <span>Banner</span>
+                  </a>
+                  <a href="banner_ast_infinite_scroll_demo_page.html" class="item" data-content="banner_ast_infinite_scroll_demo_page">
+                     <span>Banner</span> Infinite Scroll
+                  </a>
+                  <a href="banner_roadblock_ast_demo_page.html" class="item" data-content="banner_roadblock_ast_demo_page">
+                     <span>Banner</span> Roadblock
+                  </a>
+                  <a href="native_ast_demo_page.html" class="item" data-content="native_ast_demo_page">
+                     <span>Native</span>
+                  </a>
+                  <a href="video_outstream_ast_demo_page.html" class="item" data-content="video_outstream_ast_demo_page">
+                     <span>Video</span> Out-Stream
+                  </a>
+               </div></div>
+            </div>  
+            <div class="dtd">
+               <div id="container">
+                  <h1>Banner AST Implementation</h1>
+                  <div id="left">
+                     <div class="apn_ad_slot">
+                        <h4>Simple Banner AST Tag</h4>
+                        <div id="apn_ad_slot_1">
+                           <script type="text/javascript">
+                              apntag.anq.push(function(){
+                                 //signal to script that this DOM element has been loaded and is ready to be populated with an ad
+                                 apntag.showTag('apn_ad_slot_1');
+                              });
+                           </script>
+                        </div>
+                     </div>
+                     <div class="apn_ad_slot">
+                        <h4>Simple SafeFrame Banner AST Tag</h4>
+                        <div class="apn_ad_slot" id="apn_ad_slot_2">
+                           <script type="text/javascript">
+                              apntag.anq.push(function() {
+                                 //signal to script that this DOM element has been loaded and is ready to be populated with an ad
+                                 apntag.showTag('apn_ad_slot_2');
+                              });
+                           </script>
+                        </div>
+                     </div>
+                  </div>
+
+                  <div id="right">
+
+                     <h4>Instructions</h4>
+
+                     <p><b>Step 1:</b> you will need to create the APN object and load the AppNexus JavaScript library. This part of the code can be copy-pasted directly into your web page - no additional developer changes are required. This usually goes in the <i>&lt;head&gt;</i> of the of the page, but if you don't have access to that, you can put the entire tag in one code block in the <i>&lt;body&gt;</i>.</p>
+
+<pre><code class="html">
+   &lt;html&gt;
+   &lt;head&gt;
+   &lt;script type="text/javascript"&gt;
+   //create empty apntag object if it doesn't exist
+   var apntag = apntag || {};
+   //create a queue on the apntag object       
+   apntag.anq = apntag.anq || [];
+
+   //load ast.js - async
+   (function() {
+      var d = document, e = d.createElement('script'), p = d.getElementsByTagName('head')[0];
+      e.type = 'text/javascript';  e.async = true;
+      e.src = '//acdn.adnxs.com/ast/ast.js';
+      p.insertBefore(e, p.firstChild);
+   })();
+
+</code></pre>
+
+                     <p><b>Step 2:</b> this is the continuation of the above step. Here you will need to make some adjustments in setting the global page options: you will need to set to correct member ID (the one in the example is 958, but this will need to be replaced with your own member seat) and define the page-wide targeting parameters (there are none set in this example, but if you want to set some, please see the documentation linked after the instructions).</p>
+
+<pre><code class="javascript">
+   //push commands to loading queue, to allow for async loading
+   apntag.anq.push(function() {
+      //set global page options
+      apntag.setPageOpts({
+         member: 958
+      });
+
+</code></pre>  
+                     
+                     <p><b>Step 3:</b> now we will define the tags. Below you can see the code used to define the two tags implemented on this page:</p>
+
+<pre><code class="javascript">  
+   apntag.defineTag({
+      tagId: 12886199,
+      sizes: [[300,250]],
+      targetId: 'apn_ad_slot_1'
+   });
+
+   apntag.defineTag({
+      enableSafeFrame: true,
+      tagId: 12992714,
+      sizes: [[300,250],[738,90]],
+      targetId: 'apn_ad_slot_2'
+   });
+
+</code></pre>
+
+                     <p><b>Step 4:</b> right after the tags are defined, they will need to be loaded. This is the last part of the code which is usually found in the <i>&lt;head&gt;</i> section.</p>
+
+<pre><code class="html">
+      apntag.loadTags();
+   });
+   &lt;/script&gt;
+   &lt;/head&gt;
+
+</code></pre>
+
+                     <p><b>Step 5:</b> finally, it's time to define the location of the placements, which will be coded in the <i>&lt;body&gt;</i> part of the webpage.</p>
+
+<pre><code class="html">
+   &lt;body&gt;
+         &lt;div id="apn_ad_slot_1"&gt;
+            &lt;script type="text/javascript"&gt;
+            apntag.anq.push(function() {
+               //signal to script that this DOM element has been loaded and is ready to be populated with an ad
+               apntag.showTag('apn_ad_slot_1');
+            });
+            &lt;/script&gt;
+         &lt;/div&gt;
+         &lt;br&gt;
+         &lt;div id="apn_ad_slot_2"&gt;
+            &lt;script type="text/javascript"&gt;
+            apntag.anq.push(function() {
+               apntag.showTag('apn_ad_slot_2');
+            });
+            &lt;/script&gt;
+         &lt;/div&gt;
+   &lt;/body&gt;
+   &lt;/html&gt;
+
+</code></pre>
+
+                     <p>You can find more detailed information about the implementation here: <a href="https://wiki.appnexus.com/display/sdk/Set+up+Placements+with+AST" target=_blank>AppNexus Wiki - Set up Placements with AST</a>.</p>
+
+                     <p>For further AST API references, you can also refer to the following documentation: <a href="https://wiki.appnexus.com/display/sdk/AST+API+Reference" target=_blank>AppNexus Wiki - AST API Reference</a>.</p>
+
+                     <p>Further things to note:</p>
+
+                     <ul>
+                        <li>Setting <i>allowedFormats</i> on AST is optional; if it's set, it will override the media types assigned on the placements' settings in Console.</li>
+                        <li>The media types allowed on the <i>allowedFormats</i> field are banner, video, native and audio. If you want a different format than these on the placements, then don't set the field and set the media type on the placement in Console.</li>
+                        <li>It is possible to have several formats on the same placement (this is called superauction).</li>
+                        <li>As it can be seen in the above code, placement 12992714 has <i>enableSafeFrame: true</i>. This means it enables the SafeFrame iFrame which gives publisher more control - the options can be set over <i>setSafeFrameConfig</i>. More information on this can be found here: <a href ="https://wiki.appnexus.com/display/sdk/SafeFrame+API+Reference" target=_blank>AppNexus Wiki - SafeFrame API Reference</a>.</li>
+                     </ul>
+
+                     <p>Finally, regularly checking on the <a href="https://wiki.appnexus.com/display/sdk/AST+Release+History" target=_blank>AST release history</a> is encouaged so that you can see the latest releases and adjust the code accordingly if needed (due to breaking changes, for example).</p>
+
+                     <p>With the help of AST, roadblock can also be achieved. Please see this page for the setup: <a href ="https://dstefanescu7.github.io/AST-demo-pages/banner_roadblock_ast_demo_page.html" target=_blank>Demo Page- Banner Roadblock AST Implementation</a>.</p>
+
+                  </div>
+
+                  <div class="footer">
+                     <i><small>© 2018 AppNexus Inc. All Rights Reserved</small></i>
+                  </div>
+               </div>
+            </div> 
+         </div>
+
+      </div>
+   
+      <script src="js/highlight.pack.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script>
+      <script src="js/lc.js"></script>
+      <script src="js/demo.js"></script>
+   </body>
+</html>
