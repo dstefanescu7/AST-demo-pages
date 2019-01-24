@@ -55,6 +55,10 @@ NAV
 
 #nav_btn{position:absolute;width:36px;height:60px;background:url(../img/nav_btn.png) center center no-repeat;top:0;left:0;display:none;}
 
+#nav_c2 #nav{background:#eee;}
+#nav_c2 #nav .padd{padding:20px;border:0 none;}
+#nav_c2 #nav .item{text-align: left;}
+
 /*
 ******************
 CONTENT
@@ -120,4 +124,5 @@ RESPONSIVE
 @media screen and (max-width: 700px){
     .dtd:first-child{display:none;}
     .logo{margin:auto;}
+    #nav_btn{display: block;}
 }
