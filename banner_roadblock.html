@@ -1,23 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
    <head>
-      <style>
-         html, body {background-color: #ffffff; font-family: Arial, Helvetica, sans-serif; line-height: 150%; margin-left: 225px; margin-right: 225px;}
-         H1 {text-align: center;}
-       	#apn_ad_slot_1 {position: absolute; visibility: visible; left: 200px; top: 250px; z-index: 200;}
- 		   #apn_ad_slot_3 {position: absolute; visibility: visible; right: 200px; top: 250px; z-index: 200;}
-		   p {width: 800px; margin: auto; padding: 10px;}
-		   footer {
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            height: 50px;
-            width: 100%;
-            overflow: hidden;
-		   }
-      </style>
       <meta charset="utf-8">
-      <title>Demo Page - Banner Roadblock AST Implementation</title>
+      <title>Banner Roadblock AST Implementation</title>
+      <link rel="stylesheet" href="css/style.css">
+      <link rel="stylesheet" href="css/monokai-sublime.css">
+      <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" />
       <script type="text/javascript">
          //create empty apntag object if it doesn't exist
          var apntag = apntag || {};
@@ -57,9 +45,42 @@
          });
       </script>
    </head>
-   <body>
-      <br>
-      <h1>Demo Page - Banner Roadblock AST Implementation</h1>
+   <body class="roadblock">
+      
+      <div id="header">
+         <div class="logo"></div>
+         <div id="nav_btn"></div>
+      </div>
+
+      <div id="nav_c2"></div>
+      
+      <div class="site">
+
+         <div class="dtable">
+            <div class="dtd" id="nav_c">
+               <div id="nav"><div class="padd">
+                  <a href="./" class="item">
+                        <span>Banner</span>
+                  </a>
+                  <a href="banner_scroll.html" class="item">
+                        <span>Banner</span>&nbsp;Infinite&nbsp;Scroll
+                  </a>
+                  <a href="banner_roadblock.html" class="item selected">
+                        <span>Banner</span>&nbsp;Roadblock
+                  </a>
+                  <a href="native.html" class="item">
+                        <span>Native</span>
+                  </a>
+                  <a href="video_outstream.html" class="item">
+                        <span>Video</span>&nbsp;Out-Stream
+                  </a>
+               </div></div>
+            </div>  
+            <div class="dtd">
+               <div id="container">
+
+         <h1>Banner Roadblock AST Implementation</h1>
+
          <div id="apn_ad_slot_1">
             <h4>Creative 1</h4>
             <script type="text/javascript">
@@ -69,16 +90,8 @@
                });
             </script>
          </div>
-         <br>
-         <div id="apn_ad_slot_2" align="center">
-            <h4>Creative 2</h4>
-            <script type="text/javascript">
-               apntag.anq.push(function() {
-                   //signal to script that this DOM element has been loaded and is ready to be populated with an ad
-                   apntag.showTag('apn_ad_slot_2');
-               });
-            </script>
-         </div>
+
+         <!--
          <div id="apn_ad_slot_3">
             <h4>Creative 3</h4>
             <script type="text/javascript">
@@ -88,12 +101,33 @@
                });
             </script>
          </div>
-         <br>
+         -->        
+
          <p>Roadblocks allow you to serve multiple creatives together on the same page, however this only works on managed inventory where you can control both sell-side and buy-side options. For more information, please see: <a href="https://wiki.appnexus.com/display/console/Target+Your+Inventory+with+Roadblocking" target=_blank>AppNexus Wiki - Target Your Inventory with Roadblocking</a>.</p>
          <p>From an implementation point of view, there are no specific changes (it just requires all roadblock tags to be implemented on the same page) compared to the banner implementation so please follow the steps on the banner demo page to set up AST.</p>
          <p>Finally, regularly checking on the <a href="https://wiki.appnexus.com/display/sdk/AST+Release+History" target=_blank>AST release history</a> is encouaged so that you can see the latest releases and adjust the code accordingly if needed (due to breaking changes, for example).</p>
-         <footer style="color:#999;text-align:center">
+
+         <div id="apn_ad_slot_2">
+            <h4>Creative 2</h4>
+            <script type="text/javascript">
+               apntag.anq.push(function() {
+                   //signal to script that this DOM element has been loaded and is ready to be populated with an ad
+                   apntag.showTag('apn_ad_slot_2');
+               });
+            </script>
+         </div>
+
+         <div class="footer">
             <i><small>© 2018 AppNexus Inc. All Rights Reserved</small></i>
-         </footer>
+         </div>
+            </div>
+         </div>
+         
+      </div>
+
+      <script src="js/highlight.pack.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script>
+      <script src="js/lc.js"></script>
+      <script src="js/demo.js"></script>
    </body>
 </html>
