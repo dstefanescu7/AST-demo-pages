@@ -41,38 +41,7 @@
          <div class="dtd">
             <div id="container">
                <h1>Native AST Implementation - IN PROGRESS</h1>
-               <h4>Instructions</h4>
-               <p>Please see the details for each step below. The steps are then highlighted through comments directly in the embedded code underneath.</p>
-               <p><b>Step 1:</b> you will need to create the APN object and load the AppNexus JavaScript library. This part of the code can be copy-pasted directly into your web page - no additional developer changes are required. This usually goes in the <i>&lt;head&gt;</i> of the of the page, but if you don't have access to that, you can put the entire tag in one code block in the <i>&lt;body&gt;</i>.</p>
-               <p><b>Step 2:</b> this is the continuation of the above step. Here you will need to make some adjustments in setting the global page options: you will need to set to correct member ID (the one in the example is 958, but this will need to be replaced with your own member seat) and define the page-wide targeting parameters (there are none set in this example, but if you want to set some, please see the documentation linked after the instructions).</p>
-               <p><b>Step 3:</b> now we will define the tag. In the example below you can see the code used to define the tag implemented on this page. Here you will also define the native requirements the seller/publisher has for what the creative should contain (title, image etc).</p>
-               <p><b>Step 4:</b> right after the tag is defined, it will need to be loaded. This is the last part of the code which is usually found in the <i>&lt;head&gt;</i> section.</p>
-               <p><b>Step 5:</b> now we will implement the script used to render native in the <i>&lt;body&gt;</i> part of the webpage, where we want it to appear; this is self-contained and will render in-stream. You can modify $ad.innerHTML with your own HTML and CSS to match the look and feel of your content.</p>
-               <p><b>Step 6:</b> finally, it's time to load the element in order to show the ad.</p>
-               <script async src="//jsfiddle.net/dstefanescu7/o3x6vcf1/20/embed/html,result/"></script>
-               <p>You can find more detailed information about the implementation here: <a href="https://wiki.appnexus.com/display/sdk/Set+up+Placements+with+AST" target=_blank>AppNexus Wiki - Set up Placements with AST</a>.</p>
-               <p>For further AST API references, you can also refer to the following documentation: <a href="https://wiki.appnexus.com/display/sdk/AST+API+Reference" target=_blank>AppNexus Wiki - AST API Reference</a>.</p>
-               <p>Additionally, for native, we also support native video through AST so feel free to check <a href="https://wiki.appnexus.com/display/sdk/Native+Video+with+AST" target=_blank>Native Video with AST</a> to see how this can be configured and what kind of options are available.</p>
-               <p>Further things to note:</p>
-               <ul>
-                  <li>Setting <i>allowedFormats</i> on AST is optional; if it's set, it will override the media types assigned on the placements' settings in Console.</li>
-                  <li>You can add multiple sizes and media types on the tags so that, for example, it will allow banner to serve on the same placement, if there's no native demand available. However, this is not supported by all external bidders - please contact your AppNexus Account Manager for details on which bidders support this.</li>
-                  <li>Even if the above is not supported, it's still good to add both native and banner media types, with native as first option, since if it's not supported, then only the first option will be taken into consideration.</li>
-               </ul>
-               <p>Finally, regularly checking on the <a href="https://wiki.appnexus.com/display/sdk/AST+Release+History" target=_blank>AST release history</a> is encouaged so that you can see the latest releases and adjust the code accordingly if needed (due to breaking changes, for example).</p>
-               <div class="footer">
-                  <i>
-                     <small>
-                        © <script>document.write(new Date().getFullYear())</script> AppNexus Inc. All Rights Reserved
-                     </small>
-                  </i>
-               </div>
-            </div>
          </div>
       </div>
-      <script src="js/highlight.pack.js"></script>
-      <script>hljs.initHighlightingOnLoad();</script>
-      <script src="js/lc.js"></script>
-      <script src="js/demo.js"></script>
    </body>
 </html>
