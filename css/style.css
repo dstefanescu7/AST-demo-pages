@@ -29,7 +29,7 @@ HEADER
 ******************
 */
 #header{background: #fcf7f7;padding:20px;max-width:1040px;margin:auto;position:relative;z-index:2;}
-.logo{background:url(../img/logo.svg) 0 0 no-repeat / auto 100%;width:184px;height:40px;}
+.logo{background:url(../img/logo.svg) 0 0 / auto 100% no-repeat;width:184px;height:40px;}
 
 .site{padding:20px;max-width:1040px;margin:auto;background:#fcf7f7;}
 
