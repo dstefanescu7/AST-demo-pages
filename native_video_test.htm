@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <title>Native Video Test Page</title>
+      <script type="text/javascript">
+         //create empty apntag object if it doesn't exist
+         var apntag = apntag || {};
+         //create a queue on the apntag object        
+         apntag.anq = apntag.anq || [];
+         //load ast.js - async
+         (function() {
+            var d = document, e = d.createElement('script'), p = d.getElementsByTagName('head')[0];
+            e.type = 'text/javascript';  e.async = true;
+            e.src = '//acdn.adnxs.com/ast/ast.js';
+            p.insertBefore(e, p.firstChild);
+         })();
+         //push commands to loading queue, to allow for async loading
+              apntag.anq.push(function() {
+              //set global page options
+              apntag.setPageOpts({
+                  member: 9178
+                  });
+         //define ad tags
+             apntag.defineTag({
+				          tagId: 16379318,
+				          allowedFormats: ['native', 'video'],
+                  sizes: [1,1],
+				          native: {
+                    renderer_id: 889
+                  },
+                  targetId: 'apn_ad_slot'
+             });
+         //start loading tags
+             apntag.loadTags();
+         });
+      </script>
+   </head>
+   <body>
+      <div id="apn_ad_slot">
+         <script type="text/javascript">
+            apntag.anq.push(function() {
+                //signal to script that this DOM element has been loaded and is ready to be populated with an ad
+                apntag.showTag('apn_ad_slot');
+            });
+         </script>
+      </div>
+   </body>
+</html>
